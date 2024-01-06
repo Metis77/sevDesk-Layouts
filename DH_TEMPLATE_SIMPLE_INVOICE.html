@@ -1138,6 +1138,33 @@
 
     {{{data.object.foot_text}}} 
 </div>
+<div class="footText">
+    {{#data.object.payment_method_text}}
+    {{data.object.payment_method_text}}<br/><br/>
+Bequem bezahlen mit GiroPay. <br> 
+BankingApp öffnen QR-Code Scannen ...<br/>
+<br>
+<a class="qrcode url-qrcode">BCD
+001
+1
+SCT
+COBADEFFXXX
+Martin Schwenzer
+DE72500105175400422877
+EUR{{#data.object.is_final_invoice}}{{data.object.partial_calc_gross}}{{/data.object.is_final_invoice}}{{^data.object.is_final_invoice}}{{data.object.total}}{{/data.object.is_final_invoice}}
+
+
+{{data.object.invoice_number}}</a><br/><br/>
+					
+
+    {{/data.object.payment_method_text}}
+
+    {{#data.object.paymentterms}}
+    {{data.object.paymentterms}}<br/>
+    {{/data.object.paymentterms}}
+	
+    {{{data.object.foot_text}}}
+</div>
 <!-- end footer text -->
 
 <!-- second page swiss payment -->
