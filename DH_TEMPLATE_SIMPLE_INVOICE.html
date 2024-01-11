@@ -2,10 +2,8 @@
 <html>
 <head>
     <link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Gochi+Hand&display=swap" rel="stylesheet">
     <style>
         @font-face { font-family: 'ocrb'; src: url('https://docreactor.sevdesk.de/ocrb.ttf'); }
-
         @media print {
             @page {
                 size: A4 portrait;
@@ -54,11 +52,8 @@
         }
 
         body.main {
-            font-family: 'United Sans Rg', sans-serif;
-            /* font-family: 'United Serif Rg', 'Gochi Hand', Arial, Helvetica, sans-serif; */
             /* font-family: 'Roboto', sans-serif; */
-            /* font-family: 'Gochi Hand', cursive; */
-            font-weight: 400;
+            font-family: 'United Sans Rg', sans-serif;
             counter-reset: position;
             margin: 2px 8px 8px 8px;
         }
@@ -173,6 +168,12 @@
 
         .url-qrcode {
             width: 14mm;
+        }
+
+        .epcQr {
+            height: 80px;
+            text-align: right;
+            margin-bottom: 6px;
         }
 
         hr.invisible {
@@ -457,7 +458,7 @@
             font-family: 'ocrb'!important;
         }
     </style>
-    <link rel="stylesheet" href="https://raw.githubusercontent.com/Metis77/sevDesk-Layouts/main/styles.css">
+<link rel="stylesheet" href="https://raw.githubusercontent.com/Metis77/sevDesk-Layouts/main/styles.css">
 </head>
 
 <body class="main">
@@ -1128,44 +1129,23 @@
     {{# i18n }}Delivery date footer text{{/ i18n}}<br/>
     {{/data.object.delivery_equal_invoice}}
 
-    <!-- {{#data.object.payment_method_text}}
-    {{data.object.payment_method_text}}<br/>
-    {{/data.object.payment_method_text}} -->
-
-    {{#data.object.paymentterms}}
-    {{data.object.paymentterms}}<br/>
-    {{/data.object.paymentterms}}
-
-    {{{data.object.foot_text}}} 
-</div>
-<div class="footText">
     {{#data.object.payment_method_text}}
-    {{data.object.payment_method_text}}<br/><br/>
-Bequem bezahlen mit GiroPay. <br> 
-BankingApp öffnen QR-Code Scannen ...<br/>
-<br>
-<a class="qrcode url-qrcode">BCD
-001
-1
-SCT
-COBADEFFXXX
-Martin Schwenzer
-DE72500105175400422877
-EUR{{#data.object.is_final_invoice}}{{data.object.partial_calc_gross}}{{/data.object.is_final_invoice}}{{^data.object.is_final_invoice}}{{data.object.total}}{{/data.object.is_final_invoice}}
-
-
-{{data.object.invoice_number}}</a><br/><br/>
-					
-
+    {{data.object.payment_method_text}}<br/>
     {{/data.object.payment_method_text}}
 
     {{#data.object.paymentterms}}
     {{data.object.paymentterms}}<br/>
     {{/data.object.paymentterms}}
-	
+
     {{{data.object.foot_text}}}
 </div>
 <!-- end footer text -->
+
+{{#parameter.epcQrCode_Y}}
+{{#data.epc_qr.show}}
+<img src="{{data.epc_qr.img_base64}}" class="epcQr" />
+{{/data.epc_qr.show}}
+{{/parameter.epcQrCode_Y}}
 
 <!-- second page swiss payment -->
 {{#data.object.esr.config}}

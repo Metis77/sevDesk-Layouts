@@ -169,6 +169,12 @@
             width: 14mm;
         }
 
+        .epcQr {
+            height: 80px;
+            text-align: right;
+            margin-bottom: 6px;
+        }
+
         hr.invisible {
             visibility: hidden;
             clear: both;
@@ -1188,6 +1194,12 @@
     {{{data.object.foot_text}}}
 </div>
 <!-- end footer text -->
+
+{{#parameter.epcQrCode_Y}}
+{{#data.epc_qr.show}}
+<img src="{{data.epc_qr.img_base64}}" class="epcQr" />
+{{/data.epc_qr.show}}
+{{/parameter.epcQrCode_Y}}
 
 <!-- second page swiss payment -->
 {{#data.object.esr.config}}
